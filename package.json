@@ -1,0 +1,24 @@
+{
+  "name": "hmr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kanejoe/hmr.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kanejoe/hmr/issues"
+  },
+  "homepage": "https://github.com/kanejoe/hmr#readme",
+  "devDependencies": {
+    "babel": "^6.0.14","babel-core": "~6.0.12",
+"babel-loader": "babel/babel-loader#develop",
+"babel-preset-es2015": "~6.0.12"
+  }
+}
