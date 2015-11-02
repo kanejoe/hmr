@@ -6,7 +6,8 @@ var server = new WebpackDevServer(webpack(config), {
   // webpack-dev-server options
   publicPath: config.output.publicPath,
   hot: true,
-  quiet: true,  // https://github.com/webpack/docs/wiki/webpack-dev-server#webpack-dev-server-cli
+  noInfo: false,
+  quiet: false,  // https://github.com/webpack/docs/wiki/webpack-dev-server#webpack-dev-server-cli
   stats: { colors: true },
 });
 
