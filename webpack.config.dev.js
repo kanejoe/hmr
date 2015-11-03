@@ -6,16 +6,15 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:8081',  // // WebpackDevServer host and port
     'webpack/hot/only-dev-server',  // "only" prevents reload on syntax errors
-    './src/client/entry',  // app's entry point
+    'src/client/entry',  // app's entry point
   ],
   output: {
-    path: path.join(__dirname, '/public/js/'),
+    path: path.join(__dirname, '/public/js/'),  // q: what is this for?
     filename: 'app.js',
     publicPath: 'http://localhost:8081/js/',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify("development"),
