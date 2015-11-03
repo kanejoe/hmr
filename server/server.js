@@ -80,11 +80,6 @@ import Immutable, { Map } from 'immutable';
 
 import configureStore                     from '../shared/store/configureStore';
 import routes                             from "../shared/sharedRoutes";
-import {
-  ReduxRouter,
-  routerStateReducer,
-  reduxReactRouter
-} from 'redux-router';
 
 require('./routes')(app, passport);
 app.get('/*', function (req, res, next) { // review: https://github.com/coodoo/react-redux-isomorphic-example/blob/master/js/boot-client.js  (partic routing)

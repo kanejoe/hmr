@@ -7,3 +7,6 @@ An up to date isomorphic React App with:
 - react 0.14.1
 - express
 - react-transform
+
+## Webpack Config
+- https://github.com/gaearon/react-hot-boilerplate/blob/master/webpack.config.js

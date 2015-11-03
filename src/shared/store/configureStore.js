@@ -1,11 +1,5 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import { devTools, persistState } from 'redux-devtools';
-//import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
-import {
-  ReduxRouter,
-  routerStateReducer,
-  reduxReactRouter
-} from 'redux-router';
+//import { devTools, persistState } from 'redux-devtools';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
