@@ -67,6 +67,7 @@ const webpackConfig = require('../../webpackConfig');
 const compiler = webpack(webpackConfig);
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
+  hot: true,
   publicPath: webpackConfig.output.publicPath,
   stats: {
     colors: true
@@ -75,6 +76,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require('webpack-hot-middleware')(compiler));
 app.get('*', function(req, res) {
+  console.dir(__dirname)
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
