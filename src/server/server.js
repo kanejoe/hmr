@@ -15,8 +15,6 @@ delete process.env.BROWSER; // http://stackoverflow.com/a/30355080/578667
  * Config
  */
 const config = require("../../config");
-//import config from "../../config";
-
 const app = express();
 app.config = config;
 
@@ -36,14 +34,14 @@ switch(app.get('env')) {
     throw new Error('Unknown execution environment: ' + app.get('env'));
 }
 
-app.db = mongoose.createConnection( mongoUri, {server:{auto_reconnect:true}} );
+/*app.db = mongoose.createConnection( mongoUri, {server:{auto_reconnect:true}} );
 app.db.on('error', console.error.bind(console, 'mongoose connection error: '));
 app.db.once('open', function (conn) {
   console.log( "mongodb started..." )
 });
 app.db.on('disconnected', function() {
   app.db = mongoose.connect( mongoUri, {server:{auto_reconnect:true}} );
-});
+});*/
 
 // set up Jade
 app.set('views', './views');
@@ -60,13 +58,28 @@ app.use( morgan(app.get("env") === "production" ? "combined" : "dev") );
 app.use( compression() );
 app.use( bodyParser.urlencoded({ extended:true }) );
 app.use( bodyParser.json() );
-app.use( favicon(path.resolve(__dirname, '..', '..', 'src', 'images/favicon.ico')) );
-// app.use( serveStatic(path.resolve(__dirname, "src", "client")); // in order to serve the bundle -- used with production code
+//app.use( favicon(path.resolve(__dirname, '..', '..', 'src', 'images/favicon.ico')) );
+
+
+// webpack Middleware
+import webpack from 'webpack';
+const webpackConfig = require('../../webpackConfig');
+console.dir(webpackConfig)
+const compiler = webpack(webpackConfig);
+app.use(require('webpack-dev-middleware')(compiler, {
+  noInfo: true,
+  publicPath: webpackConfig.output.publicPath
+}));
+
+app.use(require('webpack-hot-middleware')(compiler));
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 /**
  * config data models
  */
-require('./models')(app, mongoose);
+//require('./models')(app, mongoose);
 
 /**
  * set up passport
@@ -74,37 +87,19 @@ require('./models')(app, mongoose);
 //require('../../config/passport')(app, passport);
 
 // Routes
-import React                              from 'react';
+/*import React                              from 'react';
 import ReactDOMServer, { renderToString } from 'react-dom/server';
 import { createLocation }                 from 'history';
 import { Router, RoutingContext, match }  from 'react-router';
 import { Provider }                       from 'react-redux';
-import Immutable from 'immutable';
-const { Map } = Immutable;
+import Immutable, { Map } from 'immutable';
 
 import configureStore                     from '../shared/store/configureStore';
 import routes                             from "../shared/sharedRoutes";
-import {
-  ReduxRouter,
-  routerStateReducer,
-  reduxReactRouter
-} from 'redux-router';
 
 require('./routes')(app, passport);
 app.get('/*', function (req, res, next) { // review: https://github.com/coodoo/react-redux-isomorphic-example/blob/master/js/boot-client.js  (partic routing)
   const outcome = {};
-
-  const getUsers = function(callback) {
-    req.app.db.models.User
-      .find({})
-      .lean() // vital to weed out extraneous info
-      .select('_id email')
-      .exec( function(err, users) {
-        if (err) return callback(err, null);
-        outcome.users = users;
-        return callback(null, 'users');
-    });
-  }
 
   const getReqs = function(callback) {
     req.app.db.models.Reqs
@@ -128,6 +123,7 @@ app.get('/*', function (req, res, next) { // review: https://github.com/coodoo/r
     match({ routes, location }, (err, redirectLocation, renderProps) => {
       if (err) { console.error(err); return res.status(500).end('Internal server error'); }
       if (!renderProps) return res.status(404).json({'sharedRoutes': sharedRoutes, 'location': location});  // 'Not found - routes did not match location.'
+      //return res.json(renderProps)
 
       const initialComponent = (
         <Provider store={store} key='provider'>
@@ -144,8 +140,8 @@ app.get('/*', function (req, res, next) { // review: https://github.com/coodoo/r
     });
   };
 
-  require('async').series([getUsers, getReqs], asyncFinally);
-});
+  require('async').series([getReqs], asyncFinally);
+});*/
 
 var server = app.listen(app.config.port, function () {
   var host = server.address().address;
