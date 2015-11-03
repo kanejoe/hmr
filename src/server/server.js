@@ -64,11 +64,13 @@ app.use( bodyParser.json() );
 // webpack Middleware
 import webpack from 'webpack';
 const webpackConfig = require('../../webpackConfig');
-console.dir(webpackConfig)
 const compiler = webpack(webpackConfig);
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
-  publicPath: webpackConfig.output.publicPath
+  publicPath: webpackConfig.output.publicPath,
+  stats: {
+    colors: true
+  }
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));

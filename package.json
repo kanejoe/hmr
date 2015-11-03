@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel-node src -d lib --experimental",
+    "build": "babel src -d lib",
     "clean": "rimraf lib",
     "dev-server": "node lib/server/webpack",
     "server": "nodemon lib/server/server",
@@ -34,6 +34,8 @@
     "concurrently": "^0.1.1",
     "nodemon": "^1.8.1",
     "react-hot-loader": "^1.3.0",
+    "react-transform-catch-errors": "^1.0.0",
+    "react-transform-hmr": "^1.0.1",
     "redux-devtools": "^2.1.5",
     "rimraf": "^2.4.3",
     "webpack": "^1.12.2",
