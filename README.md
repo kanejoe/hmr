@@ -14,3 +14,6 @@ NB: React Hot Loader is being deprecated in favor of the React Transform family 
 
 Previous Hot Boilerplate examples at:
 - https://github.com/gaearon/react-hot-boilerplate/blob/master/webpack.config.js
+
+## Example (and Good) Repos
+- https://github.com/glenjamin/ultimate-hot-reloading-example
