@@ -8,5 +8,9 @@ An up to date isomorphic React App with:
 - express
 - react-transform
 
-## Webpack Config
+## Webpack Config and Hot Loading
+NB: React Hot Loader is being deprecated in favor of the React Transform family of projects
+- https://github.com/gaearon/react-transform-boilerplate
+
+Previous Hot Boilerplate examples at:
 - https://github.com/gaearon/react-hot-boilerplate/blob/master/webpack.config.js
