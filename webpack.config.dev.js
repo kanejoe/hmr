@@ -3,10 +3,10 @@ var path = require('path');
 
 module.exports = {
   devtool: 'eval',
-  entry: [ // webpack/hot/only-dev-server
-    'webpack-dev-server/client?http://localhost:8081',
-    'webpack/hot/only-dev-server',
-    './src/client/entry',
+  entry: [
+    'webpack-dev-server/client?http://localhost:8081',  // // WebpackDevServer host and port
+    'webpack/hot/only-dev-server',  // "only" prevents reload on syntax errors
+    './src/client/entry',  // app's entry point
   ],
   output: {
     path: path.join(__dirname, '/public/js/'),
@@ -31,7 +31,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.js?$/, loaders: ['react-hot', 'babel?optional[]=runtime&stage=0'], exclude: /node_modules/ },
+      { test: /\.jsx?$/, loaders: ['react-hot', 'babel?optional[]=runtime&stage=0'], exclude: /node_modules/ },
       { test: /\.css$/, loader: "style-loader!css-loader?sourceMap" },
       { test: /\.less$/, loader: "style-loader!css-loader!less-loader" },
       { test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },

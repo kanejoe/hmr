@@ -6,9 +6,12 @@ var server = new WebpackDevServer(webpack(config), {
   // webpack-dev-server options
   publicPath: config.output.publicPath,
   hot: true,
-  noInfo: false,
-  quiet: false,  // https://github.com/webpack/docs/wiki/webpack-dev-server#webpack-dev-server-cli
+  //noInfo: false,
+  //quiet: false,  // https://github.com/webpack/docs/wiki/webpack-dev-server#webpack-dev-server-cli
   stats: { colors: true },
 });
 
-server.listen(8081, "localhost", function() {});
+server.listen(8081, "localhost", function(err, result) {
+  if (err) console.warn(err);
+  console.dir('listening on 8081');
+});
