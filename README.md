@@ -20,3 +20,7 @@ Previous Hot Boilerplate examples at:
 
 ## Example (and Good) Repos
 - https://github.com/glenjamin/ultimate-hot-reloading-example
+- https://github.com/kadira-samples/react-graphql-todos
+
+Webpack Configs
+- https://gist.github.com/oviava/b6e903fd99dfe21b1c3e
